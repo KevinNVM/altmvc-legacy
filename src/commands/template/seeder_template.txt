@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * Seeder file for populating the '%%TableName%%' table with sample data.
+ *
+ * This seeder file returns an array configuration that specifies the table name and
+ * an array of rows representing user data. 
+ *
+ * @return array An array configuration for populating the '%%TableName%%' table with sample data.
+ */
+
+
+return array(
+    'table' => '%%TableName%%',
+    'rows' => array(
+        // array(...)
+    ),
+);

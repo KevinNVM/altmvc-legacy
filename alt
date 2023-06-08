@@ -1,0 +1,103 @@
+<?php
+
+require_once 'src/commands/commands.php';
+
+$error = false;
+$option = '';
+
+
+if (!isset($argv[1]))
+    welcomeText();
+
+if (isset($argv[1])) {
+    $option = $argv[1];
+} else {
+    echo "> ";
+    $option = trim(fgets(STDIN));
+}
+
+
+
+switch (strtolower($option)) {
+    case 'exit':
+        say(__FILE__);
+        say("Goodbye!");
+        break;
+
+    case 'hello':
+        say(__FILE__);
+        say("Hello, World");
+        break;
+
+    case 'db:show':
+        say(__FILE__);
+        say("Showing database information...");
+        Commands::dbshow();
+        break;
+
+    case 'db:fresh':
+        say(__FILE__);
+        Commands::dbfresh();
+        break;
+
+    case 'db:migrate':
+        say(__FILE__);
+        Commands::dbmigrate();
+        break;
+
+    case 'make:migration':
+        say(__FILE__);
+        echo "Table Name : ";
+        $arg = trim(fgets(STDIN));
+        if (empty($arg)) {
+            say("Please enter a table name.");
+            return false;
+        }
+        Commands::makemigration($arg);
+        break;
+
+    case 'make:seeder':
+        say(__FILE__);
+        echo "Table Name : ";
+        $arg = trim(fgets(STDIN));
+        if (empty($arg)) {
+            say("Please enter a table name.");
+            return false;
+        }
+        Commands::makeseeder($arg);
+        break;
+
+    case 'make:controller':
+        say(__FILE__);
+        echo "Controller Name : ";
+        $arg = trim(fgets(STDIN));
+        if (empty($arg)) {
+            say("Please enter a valid name.");
+            return false;
+        }
+        Commands::makecontroller($arg);
+        break;
+
+    case 'make:views':
+        say(__FILE__);
+        echo "Path : ";
+        $arg = trim(fgets(STDIN));
+        if (empty($arg)) {
+            say("Please enter a valid path.");
+            return false;
+        }
+        Commands::makeviews($arg);
+        break;
+
+    case 'db:seed':
+        say(__FILE__);
+        Commands::dbseed();
+        break;
+
+    default:
+        say(__FILE__);
+        say($option);
+        echo "\nInvalid option\n";
+        $error = true;
+        break;
+}

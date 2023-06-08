@@ -1,0 +1,18 @@
+<?php
+
+return array(
+    'ENVIRONMENT' => 'local',
+
+    'APP_NAME' => 'AltMVC Legacy',
+
+    # Default App Url endpoint
+    'BASE_URL' => 'http://localhost',
+
+    # change this to path after the domain ex. '/site-name/public'
+    'URL_PREFIX' => '/test-site',
+
+    'DB_PATH' => 'db.sqlite',
+
+    'QUOTE_API' => 'api.quotable.io',
+
+);
