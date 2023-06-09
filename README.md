@@ -8,7 +8,11 @@ The syntax and usage look very similiar to the original AltMVC framework which a
 
 ## Note
 
-On linux, you may need to change the directory permission to allow the web server to write to the sqlite file.
+On linux, you may need to change the directory permission to allow the web server to write to the sqlite file. ex:
+
+```bash
+sudo chmod -R u+w,g+w,o+w <directory>
+```
 
 ## Usage
 ```bash
