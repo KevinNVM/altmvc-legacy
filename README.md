@@ -6,6 +6,10 @@ This is a clone of my original AltMVC Framework made for PHP 5.2 and up. This fr
 
 The syntax and usage look very similiar to the original AltMVC framework which also copy the Laravel syntax. This framework also doesn't have any third-party dependencies because again composer doesn't work on older PHP, so it's all handmade. Enjoy!
 
+## Note
+
+On linux, you may need to change the directory permission to allow the web server to write to the sqlite file.
+
 ## Usage
 ```bash
 # Since PHP 5.2 doesn't have built-in web server yet, just use regular web server like xampp or lampp
