@@ -78,6 +78,17 @@ switch (strtolower($option)) {
         Commands::makecontroller($arg);
         break;
 
+    case 'make:model':
+        say(__FILE__);
+        echo "Model Name : ";
+        $arg = trim(fgets(STDIN));
+        if (empty($arg)) {
+            say("Please enter a valid name.");
+            return false;
+        }
+        Commands::makemodel($arg);
+        break;
+
     case 'make:views':
         say(__FILE__);
         echo "Path : ";

@@ -113,3 +113,40 @@ function now()
 {
     return date('F j, Y H:i:s', time());
 }
+
+function pluralize($word)
+{
+    $exceptions = array(
+        'man' => 'men',
+        'woman' => 'women',
+        'roof' => 'rooves'
+        // Add any other exceptions here
+    );
+
+    $irregulars = array(
+        'child' => 'children',
+        'person' => 'people',
+        // Add any other irregular plurals here
+    );
+
+    $suffixes = array(
+        's',
+        'es',
+    );
+
+    // Check if the word is an exception or an irregular plural
+    if (array_key_exists($word, $exceptions)) {
+        return $exceptions[$word];
+    } elseif (array_key_exists($word, $irregulars)) {
+        return $irregulars[$word];
+    }
+
+    // Apply general pluralization rules
+    foreach ($suffixes as $suffix) {
+        if (substr($word, -1 * strlen($suffix)) === $suffix) {
+            return $word;
+        }
+    }
+
+    return $word . 's'; // Default plural suffix
+}

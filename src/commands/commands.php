@@ -247,6 +247,40 @@ class Commands
         }
     }
 
+    public static function makemodel($name)
+    {
+        $name = preg_replace('/\s+/', '_', $name);
+        $path = "src/app/Views";
+
+        $newFolderPath = $path . '/' . implode('/', array_slice(explode('/', $name), 0, -1));
+
+        // $name argument example: makeviews('users/index')
+
+        // Create the folder if it doesn't exist
+        if (!is_dir($newFolderPath)) {
+            mkdir($newFolderPath, 0777, true);
+        }
+
+        // Create the file path
+        $filePath = $path . '/' . $name . '.php';
+
+        $file = fopen($filePath, 'w'); // Open the file in write mode
+
+
+        if ($file) {
+            $content = file_get_contents("src/commands/template/model_template.txt");
+
+            $content = preg_replace('/%%Name%%/', ucfirst($name), $content);
+            $content = preg_replace('/%%Table%%/', strtolower(pluralize($name)), $content);
+
+            fwrite($file, $content); // Write the content to the file
+            fclose($file); // Close the file
+            say("File created successfully.");
+        } else {
+            say("Failed to open the file.");
+        }
+    }
+
 
     public static function dbseed()
     {
